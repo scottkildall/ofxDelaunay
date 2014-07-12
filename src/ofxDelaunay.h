@@ -10,6 +10,9 @@
  *	Cleaned up by Lukasz Karluk, 19/05/2010
  *
  *  Refactored for 0071 + ofMesh by James George on 21/06/2012
+ *
+ *  Modifications by Scott Kildall, 2014
+ *
  */
 
 #pragma once
@@ -33,6 +36,7 @@ public:
     ofMesh triangleMesh;
 	
 private:
+    unsigned long numTriangles;
     vector<ITRIANGLE> triangles;
     vector<XYZ> vertices;
 	

@@ -18,6 +18,7 @@ void ofxDelaunay::reset(){
     vertices.clear();
     triangles.clear();
 	triangleMesh.clear();
+    numTriangles = 0;
 }
 
 int ofxDelaunay::addPoint( const ofPoint& point ){
@@ -58,7 +59,8 @@ int ofxDelaunay::triangulate(){
 	int ntri;
 	qsort( &vertices[0], vertices.size()-3, sizeof( XYZ ), XYZCompare );
 	Triangulate( nv, &vertices[0], &triangles[0], ntri );
-	
+	numTriangles = ntri;
+    
 	// copy triangle data to ofxDelaunayTriangle.
 	triangleMesh.clear();
     
