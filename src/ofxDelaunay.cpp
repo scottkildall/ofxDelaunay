@@ -23,7 +23,7 @@ ofxDelaunay::ofxDelaunay() {
 
 ofxDelaunay::~ofxDelaunay() {
     if( STLMeshes )
-        delete STLMeshes;
+        delete [] STLMeshes;
 }
 
 void ofxDelaunay::reset(){
@@ -31,6 +31,12 @@ void ofxDelaunay::reset(){
     triangles.clear();
 	triangleMesh.clear();
     
+}
+
+void ofxDelaunay::stlOutput(ofxSTLExporter &stlExporter) {
+    for( unsigned long i = 0; i < numSTLMeshes; i++ ) {
+        (STLMeshes+i)->save(stlExporter);
+    }
 }
 
 
