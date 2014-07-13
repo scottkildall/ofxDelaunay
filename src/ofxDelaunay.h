@@ -19,10 +19,13 @@
 
 #include "ofMain.h"
 #include "Delaunay.h"
+#include "ofxSTLPrimitive.h"
 
 class ofxDelaunay {
     
 public:
+    ofxDelaunay();
+    ~ofxDelaunay();
     
 	void reset();
 	
@@ -31,12 +34,33 @@ public:
 	int addPoints( vector<ofPoint>& points );
 	
 	int  triangulate();
-	void draw();
+	void draw(Boolean bTriangleDraw);
 	
     ofMesh triangleMesh;
-	
+    
+    //-- SK: added
+    void setSize(float _s) { s= _s; }
+    void stlOutput(ofxSTLExporter &stlExporter);
+    
 private:
+    
+    //-- SK: added
+    void drawVertexPoints(XYZ &vertex1, XYZ &vertex2);
+    void drawTriangles();
+    void drawSTLMeshes();
+    void generateSTLMeshes();
+    double radians (double d);
+    double degrees (double r);
+
+    void initSTLMesh(ofxSTLBoxPrimitive *stlMesh, XYZ &vertex1, XYZ &vertex2);
+    void initRotation(ofxSTLBoxPrimitive *stlMesh, XYZ &vertex1, XYZ &vertex2);
+    
+    float s;
     unsigned long numTriangles;
+    ofxSTLBoxPrimitive *STLMeshes;
+    unsigned long numSTLMeshes;
+    //-- done SK added
+    
     vector<ITRIANGLE> triangles;
     vector<XYZ> vertices;
 	
