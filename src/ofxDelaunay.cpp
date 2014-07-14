@@ -18,7 +18,7 @@ ofxDelaunay::ofxDelaunay() {
     numTriangles = 0;
     numSTLMeshes = 0;
     STLMeshes = NULL;
-    s = 4;
+    s = 6;
 }
 
 ofxDelaunay::~ofxDelaunay() {
